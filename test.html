@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+    <style>
+        /* table tbody tr:nth-child(odd){  
+            background: white;
+        }
+        table tbody tr:nth-child(even){  
+            background: gainsboro;
+        }
+        table tbody tr:hover{  
+            background: gainsboro !important;
+        } */
+    </style>
+</head>
+<body>
+    <table class="layui-hide" id="test"></table>
+    <script src="./layui/layui.js"></script>
+<script>
+    let data = [
+        {id: 1, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 2, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 3, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 4, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是dkl的骄傲客服经理上的飞机螺丝钉解放了拉风拉风吉林的就是快捷方式多了几分来得及激烈的交锋是大家福利的建立飞机的数量房价肯定JFK四大皆空附件打开房价肯定就罚款省地方螺丝钉咖啡碱一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 5, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 6, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 7, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 8, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 9, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 10, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 11, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 12, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 13, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 14, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 15, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 16, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'},
+        {id: 17, operate: '详细信息', userName: '关云长', taskId: '12345367998654343', nodeText: '这是一串神秘的代码', phone: '17839911942', operator: '移动', phoneType:'普通', num: '1', gatewayId:'1244556787687', gatewayReport:'DFKJDFKNFKJDFFJK', time:'2020-6-10'}
+    ];
+    layui.use('table', function(){
+        var table = layui.table;
+        table.render({
+            elem: '#test',
+            // url:'/demo/table/user/',
+            data: data,
+            height: 400,
+            page: true,
+            even: true,
+            cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            cols: [[
+                {field:'id', width:80, title: '序号', align: 'center'},
+                {field:'operate', width:80, title: '操作', align: 'center'},
+                {field:'userName', width:80, title: '用户名', align: 'center'},
+                {field:'taskId', width:120, title: '任务编号', align: 'center'},
+                {field:'nodeText', title: '短信内容', width: '200', minWidth: 100, align: 'center'}, //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                {field:'phone', title: '发送号码', width: '180',align: 'center'},
+                {field:'operator', title: '运营商', align: 'center'},
+                {field:'phoneType', title: '号码类型', align: 'center'},
+                {field:'num', width:50, title: '拆分条数', align: 'center'},
+                {field:'gatewayId', width:137, title: '网关编号', align: 'center'},
+                {field:'gatewayReport', width:137, title: '网关报告', align: 'center'},
+                {field:'time', width:137, title: '时间', align: 'center'}
+            ]]
+        });
+    });
+</script>
+</body>
+</html>

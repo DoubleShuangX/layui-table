@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+</head>
+<body>
+    <table class="layui-hide" id="test"></table>
+    <script src="./layui/layui.js"></script>
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+        table.render({
+            elem: '#test',
+            url:'https://shop-wx.yunrongt.com/moreProducts',    // 数据请求接口
+            request: {
+                pageName: 'pageNum', // 传入页码的参数名称，默认：page
+                limitName: 'pageSize' //每页数据条数的参数名，默认：limit
+            },
+            parseData: function(res){   // 把自己的数据处理成表格需要的数据格式
+                console.log(res)
+                if(res.message == "success"){
+                    res.data.list.forEach(item => {
+                        item.operate = item.customerevaluation
+                        item.userName = item.title
+                        item.taskId = item.bannerpic
+                        item.nodeText = item.bannermv
+                        item.phone = item.categoryid
+                        item.operator = item.originalprice
+                        item.phoneType = item.wxPrice
+                        item.num = item.productproperty
+                        item.gatewayId = item.title
+                        item.gatewayReport = item.categoryid
+                        item.time = item.categoryid
+                    });
+                    return {
+                        "code": 0,
+                        "msg": "",
+                        "count": res.data.total,    // 数据总条数
+                        "data": res.data.list       // 数据，需要处理成对应格式
+                    }
+                }
+            },
+            even: true, // 隔行样式设置
+            // data: data,  // 可以在这里写死数据
+            height: 400,    // 表格总高度
+            page: true,     // 是否展示分页
+            cellMinWidth: 80, //全局定义常规单元格的最小宽度
+            cols: [[    // 表格头设置
+                {field:'id', width:80, title: '序号', align: 'center'},
+                {field:'operate', width:80, title: '操作', align: 'center'},
+                {field:'userName', width:80, title: '用户名', align: 'center'},
+                {field:'taskId', width:120, title: '任务编号', align: 'center'},
+                {field:'nodeText', title: '短信内容', width: '200', minWidth: 100, align: 'center'}, //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                {field:'phone', title: '发送号码', width: '180',align: 'center'},
+                {field:'operator', title: '运营商', align: 'center'},
+                {field:'phoneType', title: '号码类型', align: 'center'},
+                {field:'num', width:50, title: '拆分条数', align: 'center'},
+                {field:'gatewayId', width:137, title: '网关编号', align: 'center'},
+                {field:'gatewayReport', width:137, title: '网关报告', align: 'center'},
+                {field:'time', width:137, title: '时间', align: 'center'}
+            ]]
+        });
+    });
+</script>
+</body>
+</html>
